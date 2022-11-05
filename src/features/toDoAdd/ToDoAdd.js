@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 
 
-export default function AddToDo(props) {
+export default function ToDoAdd(props) {
 	
 	const addClickEvent = (e) => {
 

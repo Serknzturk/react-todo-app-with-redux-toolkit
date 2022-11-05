@@ -1,19 +1,29 @@
+import React, {useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {useDispatch} from 'react-redux';
 import Container from '@mui/material/Container';
-import ToDoList from './components/todos/list/todoList.js';
-import AddToDo from './features/addToDo/addToDo.js';
+import {loadToDos} from './features/toDoList/toDoListSlice.js';
+import ToDoList from './features/toDoList/ToDoList.js';
+import ToDoAdd from './features/toDoAdd/ToDoAdd.js';
 
 function App() {
-  return (
-    <Container maxWidth="md">
-      <header className="App-header">
-        <h1 className="main-title">ToDo List</h1>
-      </header>
-      <AddToDo />
-      <ToDoList />
-    </Container>
-  );
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(loadToDos());
+    }, [dispatch]);
+
+
+    return (
+        <Container maxWidth="md">
+            <header className="App-header">
+                <h1 className="main-title">ToDo List</h1>
+            </header>
+            <ToDoAdd />
+            <ToDoList />
+        </Container>
+    );
 }
 
 export default App;
