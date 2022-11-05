@@ -12,6 +12,11 @@ class DbManager{
 		return item;
 	}
 
+	removeItem(id){
+		dbMock = dbMock.filter(data=>data.id !== id);
+		return id;
+	}
+
 	getItems(){
 		return dbMock;
 	}
