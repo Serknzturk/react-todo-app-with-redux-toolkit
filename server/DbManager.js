@@ -13,6 +13,8 @@ class DbManager{
 	}
 
 	removeItem(id){
+		console.log(id);
+		console.log(dbMock);
 		dbMock = dbMock.filter(data=>data.id !== id);
 		return id;
 	}

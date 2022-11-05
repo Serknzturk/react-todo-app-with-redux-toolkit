@@ -30,7 +30,10 @@ app.post('/api/todo-add', (req,res)=> {
 	res.send(respond);
 });
 app.post('/api/todo-remove', (req,res)=> {
-	const respond = DbManager.removeItem(req.body);
+	let respond = DbManager.removeItem(req.body.id);
+	if(typeof respond != 'string'){
+		respond = {id:respond};
+	}
 	res.send(respond);
 });
 
