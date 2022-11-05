@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {selectSingleToDo, singleToDoUpdate} from './toDoSingleSlice.js';
+import {singleToggleCheck} from '../toDoList/toDoListSlice.js';
 
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -16,12 +17,8 @@ export default function ToDoSingle(props){
     const dispatch = useDispatch();
 
 	const completeClickEvent = (e) => {
-		e.target.checked = !!e.target.checked;
-        //singleToDo.checked = e.target.checked;
-		//TO DO: Set checked to state
         dispatch(singleToDoUpdate(singleToDo));
 	}
-
 
 	return (
 		<ListItem divider={true}
@@ -34,7 +31,7 @@ export default function ToDoSingle(props){
           <ListItemAvatar>
               <Checkbox aria-label="Completed" 
               	onClick={(e)=>{completeClickEvent(e)}} 
-              	defaultChecked={singleToDo.checked} 
+              	checked={singleToDo.checked} 
               	/>
           </ListItemAvatar>
           {

@@ -1,11 +1,10 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {createAsyncThunk} from '@reduxjs/toolkit';
 import {useSelector} from 'react-redux';
 import {selectAllToDos} from '../toDoList/toDoListSlice.js';
 
 export const singleToDoUpdate = createAsyncThunk(
 	'allToDos/singleToDo',
 	async (from, thunkAPI) => {
-		console.log(from);
 		const data = await fetch('//localhost:8081/api/todo-check',{
 			method: 'POST', // or 'PUT'
 			headers: {
@@ -14,42 +13,21 @@ export const singleToDoUpdate = createAsyncThunk(
 			body:JSON.stringify(from)
 		});
 		let json = await data.json();
-		console.log(json);
 		return json;
 	}
 );
 
-const sliceSettings = {
-	name:'allToDos/singleToDo',
-	initialState:{
-		checked:false,
-		title:'',
-		id:0,
-		onLoading:false,
-		errors:false
-	},
-	reducers:{},
-	extraReducers:{
-		[singleToDoUpdate.pending]:(state,action) => {
-			state.onLoading = true;
-			state.errors = false;
-		},
-		[singleToDoUpdate.rejected]:(state,action) => {
-			state.onLoading = false;
-			state.errors = true;
-		},
-		[singleToDoUpdate.fulfilled]:(state,action) => {
-			console.log(action);
-			state.singleToDo = action.payload.checked;
-			state.onLoading = false;
-			state.errors = false;
-		}
+export const singleSliceSettings = {
+	extraReducers: (builder) => {
+		builder.
+			addCase(singleToDoUpdate.fulfilled, (state, action) => {
+				const singleState = state.todos.filter(todo=>todo.id === action.payload.id)[0];
+				singleState.checked = action.payload.checked;
+			});
 	}
-}
+};
 
-export const toDoSingleSlice = createSlice(sliceSettings);
 export const selectSingleToDo = id => (state) => {
 	const todos = useSelector(selectAllToDos);
 	return todos.filter(todo=>todo.id === id)[0];
 }
-export default toDoSingleSlice.reducer;
