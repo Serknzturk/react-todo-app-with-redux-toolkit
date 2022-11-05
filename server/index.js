@@ -5,11 +5,7 @@ const PORT = 8081;
 
 const DbManagerClass = require('./DbManager.js');
 const DbManager = new DbManagerClass();
-
-
-const validateToDoWithSchema = (todo) => {
-
-}
+DbManager.init();
 
 
 

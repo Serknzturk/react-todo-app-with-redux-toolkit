@@ -3,6 +3,10 @@ let dbMock = require('./dbMock.js');
 
 class DbManager{
 	constructor(){
+		//Nothing to inject
+	}
+
+	init(){
 		IdManagerClass.setIds(dbMock);
 	}
 
@@ -13,8 +17,6 @@ class DbManager{
 	}
 
 	removeItem(id){
-		console.log(id);
-		console.log(dbMock);
 		dbMock = dbMock.filter(data=>data.id !== id);
 		return id;
 	}
@@ -51,6 +53,7 @@ class DbManager{
 		return schema;
 	}
 
+	//This method sets item status to checked/unchecked.
 	checkItem(itemSettings){
 		const singleItem = this.getSingleItemById(itemSettings.id);
 		if(singleItem === false) return 'Element Id Does Not Exists';
