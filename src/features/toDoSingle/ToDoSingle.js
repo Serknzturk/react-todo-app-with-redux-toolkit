@@ -15,11 +15,9 @@ export default function ToDoSingle(props){
     const singleToDo = useSelector(selectSingleToDo(props.itemData.id));
     const dispatch = useDispatch();
 
-
-    console.log(singleToDo);
-
 	const completeClickEvent = (e) => {
 		e.target.checked = !!e.target.checked;
+        //singleToDo.checked = e.target.checked;
 		//TO DO: Set checked to state
         dispatch(singleToDoUpdate(singleToDo));
 	}

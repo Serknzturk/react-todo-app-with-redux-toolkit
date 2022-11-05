@@ -5,15 +5,13 @@ import {selectAllToDos} from '../toDoList/toDoListSlice.js';
 export const singleToDoUpdate = createAsyncThunk(
 	'allToDos/singleToDo',
 	async (from, thunkAPI) => {
-		console.log(thunkAPI);
+		console.log(from);
 		const data = await fetch('//localhost:8081/api/todo-check',{
 			method: 'POST', // or 'PUT'
 			headers: {
 			  'Content-Type': 'application/json',
 			},
-			body:JSON.stringify({
-				"yes":"no"
-			})
+			body:JSON.stringify(from)
 		});
 		let json = await data.json();
 		console.log(json);
@@ -41,6 +39,7 @@ const sliceSettings = {
 			state.errors = true;
 		},
 		[singleToDoUpdate.fulfilled]:(state,action) => {
+			console.log(action);
 			state.singleToDo = action.payload.checked;
 			state.onLoading = false;
 			state.errors = false;
