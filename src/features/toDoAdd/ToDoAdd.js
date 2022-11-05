@@ -11,27 +11,39 @@ export default function ToDoAdd() {
 	
 	const dispatch = useDispatch();
 
+	//Avoid clicking/touching multiple times by mistake
+	let isAdding = {status:false};
+
 	const formSubmitEvent = (e) => {
+		//Let's avoid page refresh
 		e.preventDefault();
-		//console.log(e.target.elements.todoTitle.value);
+
+		if(isAdding.status) return;
+
+		isAdding.status = true;
+
 		dispatch(toDoAddNew({
 			'title':e.target.elements.todoTitle.value,
-			'checked':false
-		}))
+			'checked':false,
+			'isAdding':isAdding
+		}));
+
+		//Empty the value
+		e.target.elements.todoTitle.value = '';
 	}
 
 	return (
 		<form onSubmit={formSubmitEvent}>
-		<Grid container spacing={2}>
-			<Grid item xs={1}></Grid>
-			<Grid item xs>
-				<TextField name="todoTitle" size="small" fullWidth id="outlined-basic" label="New Task" variant="outlined" required />
+			<Grid container spacing={2}>
+				<Grid item xs={1}></Grid>
+				<Grid item xs>
+					<TextField name="todoTitle" size="small" fullWidth id="outlined-basic" label="New Task" variant="outlined" required />
+				</Grid>
+				<Grid item xs={2}>
+					<Button type="submit" variant="contained">Add</Button>
+				</Grid>
+				<Grid item xs={1}></Grid>
 			</Grid>
-			<Grid item xs={2}>
-				<Button type="submit" variant="contained">Add</Button>
-			</Grid>
-			<Grid item xs={1}></Grid>
-		</Grid>
 		</form>
 	)
 }

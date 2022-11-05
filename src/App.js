@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {useDispatch} from 'react-redux';
 import Container from '@mui/material/Container';

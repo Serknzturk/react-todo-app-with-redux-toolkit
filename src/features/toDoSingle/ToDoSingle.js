@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {selectSingleToDo, singleToDoUpdate, singleToDoRemove} from './toDoSingleSlice.js';
-import {singleToggleCheck} from '../toDoList/toDoListSlice.js';
 
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -16,12 +15,24 @@ export default function ToDoSingle(props){
     const dispatch = useDispatch();
     const singleToDo = useSelector(selectSingleToDo(props.itemData.id));
 
+    //Avoid clicking/touching multiple times by mistake
+    const isChecking = {status:false};
+    const isRemoving = {status:false};
+
 	const completeClickEvent = (e) => {
-        dispatch(singleToDoUpdate(singleToDo));
+        if(isChecking.status) return;
+
+        isChecking.status = true;
+
+        dispatch(singleToDoUpdate({...singleToDo, isChecking:isChecking}));
 	}
 
     const removeClickEvent = (e) => {
-        dispatch(singleToDoRemove(singleToDo.id));
+        if(isRemoving.status) return;
+
+        isRemoving.status = true;
+
+        dispatch(singleToDoRemove({id:singleToDo.id, isRemoving:isRemoving}));
     }
 
 	return (

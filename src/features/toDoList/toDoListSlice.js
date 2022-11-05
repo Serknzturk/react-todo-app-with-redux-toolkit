@@ -1,12 +1,12 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {singleToDoUpdate, singleSliceSettings} from '../toDoSingle/toDoSingleSlice.js';
+import {singleSliceSettings} from '../toDoSingle/toDoSingleSlice.js';
 import {addNewSliceSettings} from '../toDoAdd/toDoAddSlice.js';
 
 export const loadToDos = createAsyncThunk(
 	'allToDos/loadToDos',
 	async () => {
 		const data = await fetch('//localhost:8081/api/todos',{
-			method: 'GET', // or 'PUT'
+			method: 'GET',
 			headers: {
 			  'Content-Type': 'application/json',
 			}
@@ -23,15 +23,14 @@ const sliceSettings = {
 		onLoading:false,
 		errors:false
 	},
-	reducers:{
-		singleToggleCheck:(state, action)=>{
-			const item = state.todos.filter(todo=>todo.id === action.payload.id)[0];
-			item.checked = action.payload.checked;
-		}
-	},
 	extraReducers:(builder) => {
-		builder.
-		addCase(loadToDos.fulfilled, (state, action) => {
+		builder.addCase(loadToDos.pending, (state, action) => {
+			state.onLoading = true;
+			state.errors = false;
+		}).addCase(loadToDos.rejected, (state, action) => {
+			state.onLoading = false;
+			state.errors = true;
+		}).addCase(loadToDos.fulfilled, (state, action) => {
 			state.todos = action.payload;
 			state.onLoading = false;
 			state.errors = false;
@@ -46,5 +45,4 @@ const sliceSettings = {
 
 export const toDoListSlice = createSlice(sliceSettings);
 export const selectAllToDos = (state) => state.allToDos.todos;
-export const {singleToggleCheck} = toDoListSlice.actions;
 export default toDoListSlice.reducer;

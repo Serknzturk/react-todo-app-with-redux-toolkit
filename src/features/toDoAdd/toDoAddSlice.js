@@ -1,28 +1,26 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {useSelector} from 'react-redux';
-import {selectAllToDos} from '../toDoList/toDoListSlice.js';
 
 export const toDoAddNew = createAsyncThunk(
 	'allToDos/addNewToDo',
 	async (from, thunkAPI) => {
+		const {isAdding, ...sendData} = from; 
 		const data = await fetch('//localhost:8081/api/todo-add',{
-			method: 'POST', // or 'PUT'
+			method: 'POST',
 			headers: {
 			  'Content-Type': 'application/json',
 			},
-			body:JSON.stringify(from)
+			body:JSON.stringify(sendData)
 		});
 		let json = await data.json();
+		isAdding.status = false;
 		return json;
 	}
 );
 
 export const addNewSliceSettings = {
 	extraReducers: (builder) => {
-		builder.
-			addCase(toDoAddNew.fulfilled, (state, action) => {
-				console.log(action.payload);
-				state.todos = [...state.todos, action.payload];
-			});
+		builder.addCase(toDoAddNew.fulfilled, (state, action) => {
+			state.todos = [...state.todos, action.payload];
+		});
 	}
 };
