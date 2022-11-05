@@ -47,7 +47,7 @@ class DbManager{
 		const singleItem = this.getSingleItemById(itemSettings.id);
 		if(singleItem === false) return 'Element Id Does Not Exists';
 
-		singleItem.checked = itemSettings.checked;
+		singleItem.checked = !itemSettings.checked;
 
 		return singleItem;
 	}
