@@ -14,10 +14,15 @@ const validateToDoWithSchema = (todo) => {
 
 
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 
 app.get('/api/todos', (req, res) => {
 	res.send(DbManager.getItems());
+});
+
+app.post('/api/todo-check', (req,res)=>{
+	const result = DbManager.checkItem(req.body);
+	res.send(result);
 });
 
 app.post('/api/todo-add', (req,res)=> {
@@ -25,7 +30,6 @@ app.post('/api/todo-add', (req,res)=> {
 	DbManager.addItem(req.body);
 	res.send(DbManager.getItems());
 });
-
 app.post('/api/todo-remove', (req,res)=> {
 	res.send('TO DO REMOVED')
 });

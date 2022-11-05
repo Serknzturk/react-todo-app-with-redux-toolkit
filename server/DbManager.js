@@ -15,6 +15,17 @@ class DbManager{
 		return dbMock;
 	}
 
+	getSingleItemById(id){
+		const items = this.getItems();
+
+		for(let i = 0; i < items.length; i++){
+			if(items[i].id === id){
+				return items[i];
+			}
+		}
+
+		return false;
+	}
 
 	//Normally this should throw some errors, but to keep it simple, I will add placeholders
 	validateWithSchema(item){
@@ -30,6 +41,15 @@ class DbManager{
 		}
 
 		return schema;
+	}
+
+	checkItem(itemSettings){
+		const singleItem = this.getSingleItemById(itemSettings.id);
+		if(singleItem === false) return 'Element Id Does Not Exists';
+
+		singleItem.checked = itemSettings.checked;
+
+		return singleItem;
 	}
 }
 
