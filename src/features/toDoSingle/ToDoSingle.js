@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {selectSingleToDo, singleToDoUpdate} from './toDoSingleSlice.js';
+import {selectSingleToDo, singleToDoUpdate, singleToDoRemove} from './toDoSingleSlice.js';
 import {singleToggleCheck} from '../toDoList/toDoListSlice.js';
 
 import ListItem from '@mui/material/ListItem';
@@ -20,10 +20,14 @@ export default function ToDoSingle(props){
         dispatch(singleToDoUpdate(singleToDo));
 	}
 
+    const removeClickEvent = (e) => {
+        dispatch(singleToDoRemove(singleToDo.id));
+    }
+
 	return (
 		<ListItem id={singleToDo.id} divider={true}
           secondaryAction={
-            <IconButton edge="end" aria-label="delete">
+            <IconButton edge="end" aria-label="delete" onClick={(e)=>removeClickEvent(e)}>
               <DeleteIcon sx={{color:'red'}} />
             </IconButton>
           }
