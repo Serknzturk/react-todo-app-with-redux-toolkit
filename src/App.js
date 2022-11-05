@@ -1,24 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import Container from '@mui/material/Container';
+import ToDoList from './components/todos/list/todoList.js';
+import AddToDo from './features/addToDo/addToDo.js';
 
 function App() {
   return (
-    <div className="App">
+    <Container maxWidth="md">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1 className="main-title">ToDo List</h1>
       </header>
-    </div>
+      <AddToDo />
+      <ToDoList />
+    </Container>
   );
 }
 
