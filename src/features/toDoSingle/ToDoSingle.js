@@ -13,15 +13,15 @@ import Checkbox from '@mui/material/Checkbox';
 
 export default function ToDoSingle(props){
 
-    const singleToDo = useSelector(selectSingleToDo(props.itemData.id));
     const dispatch = useDispatch();
+    const singleToDo = useSelector(selectSingleToDo(props.itemData.id));
 
 	const completeClickEvent = (e) => {
         dispatch(singleToDoUpdate(singleToDo));
 	}
 
 	return (
-		<ListItem divider={true}
+		<ListItem id={singleToDo.id} divider={true}
           secondaryAction={
             <IconButton edge="end" aria-label="delete">
               <DeleteIcon sx={{color:'red'}} />

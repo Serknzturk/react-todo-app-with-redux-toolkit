@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {singleToDoUpdate, singleSliceSettings} from '../toDoSingle/toDoSingleSlice.js';
+import {addNewSliceSettings} from '../toDoAdd/toDoAddSlice.js';
 
 export const loadToDos = createAsyncThunk(
 	'allToDos/loadToDos',
@@ -37,6 +38,7 @@ const sliceSettings = {
 		});
 
 		singleSliceSettings.extraReducers(builder);
+		addNewSliceSettings.extraReducers(builder);
 	}
 
 	
