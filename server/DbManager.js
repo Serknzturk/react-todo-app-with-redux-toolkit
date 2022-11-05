@@ -9,6 +9,7 @@ class DbManager{
 	addItem(item){
 		item = this.validateWithSchema(item);
 		dbMock.push(item);
+		return item;
 	}
 
 	getItems(){

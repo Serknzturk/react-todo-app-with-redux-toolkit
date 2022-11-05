@@ -26,9 +26,8 @@ app.post('/api/todo-check', (req,res)=>{
 });
 
 app.post('/api/todo-add', (req,res)=> {
-	console.log(req)
-	DbManager.addItem(req.body);
-	res.send(DbManager.getItems());
+	const respond = DbManager.addItem(req.body);
+	res.send(respond);
 });
 app.post('/api/todo-remove', (req,res)=> {
 	res.send('TO DO REMOVED')
