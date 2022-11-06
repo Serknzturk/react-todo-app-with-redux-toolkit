@@ -18,7 +18,7 @@ A simple react application for storing tasks.
 Project has been built for a special case request. Here you can find the requested case details along with their implementation.
 
 ### User Story
-**As a User, i want to check my to-do list items.**
+**As a User, i want to check my to-do list items.**\
 User can check/uncheck for changing the task complete status.
 **As a User, i want to add new to-do item.**
 User can add new to do tasks easily by clicking on Add button
