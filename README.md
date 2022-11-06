@@ -7,7 +7,7 @@ A simple react application for storing tasks.
 
 ## Installation
 
- 1. Clone the repo by entering `gh repo clone Serknzturk/react-todo-app-with-redux-toolkit` to your terminal
+ 1. Clone the repo by entering `git clone http://github.com/Serknzturk/react-todo-app-with-redux-toolkit` to your terminal
  2. Open app directory in your Terminal
  3. CD into server directory `cd .\server\`
  4. Start server `npm run watch`
