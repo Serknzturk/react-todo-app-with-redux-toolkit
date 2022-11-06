@@ -19,17 +19,17 @@ Project has been built for a special case request. Here you can find the request
 
 ### User Story
 **As a User, i want to check my to-do list items.**\
-User can check/uncheck for changing the task complete status.\
+User can check/uncheck for changing the task complete status.
 
 **As a User, i want to add new to-do item.**\
-User can add new to do tasks easily by clicking on Add button\
+User can add new to do tasks easily by clicking on Add button
 
 **As a User, i want to remove some to-do item**\
-User can easily remove any to do task just by clicking the garbage icon at the right side of a task.\
+User can easily remove any to do task just by clicking the garbage icon at the right side of a task.
 
 ### Notes
 **Create simple GUI**\
-GUI built as simple as possible. Given example design exactly applied to the app without making any changes.\
+GUI built as simple as possible. Given example design exactly applied to the app without making any changes.
 
 **Project should be support GET/POST actions**\
 In order to use GET/POST methods, a server application has been included into project as a monorepo. Server does not connect to any database and uses a mock js object.
