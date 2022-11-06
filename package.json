@@ -1,5 +1,5 @@
 {
-  "name": "demo03",
+  "name": "React To Do App with Redux Toolkit",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
