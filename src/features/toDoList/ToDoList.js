@@ -1,18 +1,35 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import List from '@mui/material/List';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import ToDoSingle from '../toDoSingle/ToDoSingle.js';
+import {loadToDos} from './toDoListSlice.js';
 import {selectAllToDos} from './toDoListSlice.js';
+import ToDoListSkeleton from '../../components/skeleton/ToDoListSkeleton.js';
+import ListLoadingError from '../../components/errors/ListLoadingError.js';
 
 
 export default function ToDoList(){
 	const allToDos = useSelector(selectAllToDos);
-	const {onLoading} = useSelector((state)=>state.allToDos);
+	const dispatch = useDispatch();
+	const {onLoading, hasError, errorMessage} = useSelector((state)=>state.allToDos);
 
 	if(onLoading){
 		return (
-			<div>Loading....</div>
+			<ToDoListSkeleton />
 		);
+	}
+
+	if(hasError){
+		return (
+			<>
+				<ListLoadingError>{errorMessage}</ListLoadingError>
+				<Box direction="row" spacing={2} textAlign="center" marginTop="15px">
+					<Button variant="contained" onClick={()=>dispatch(loadToDos())}>Load Tasks Again</Button>
+				</Box>
+			</>
+		)
 	}
 
 	return (

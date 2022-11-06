@@ -21,19 +21,21 @@ const sliceSettings = {
 	initialState:{
 		todos:[],
 		onLoading:false,
-		errors:false
+		hasError:false,
+		errorMessage:false
 	},
 	extraReducers:(builder) => {
 		builder.addCase(loadToDos.pending, (state, action) => {
 			state.onLoading = true;
-			state.errors = false;
+			state.hasError = false;
 		}).addCase(loadToDos.rejected, (state, action) => {
 			state.onLoading = false;
-			state.errors = true;
+			state.hasError = true;
+			state.errorMessage = action.error.message;
 		}).addCase(loadToDos.fulfilled, (state, action) => {
 			state.todos = action.payload;
 			state.onLoading = false;
-			state.errors = false;
+			state.hasError = false;
 		});
 
 		singleSliceSettings.extraReducers(builder);

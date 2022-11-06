@@ -17,7 +17,7 @@ function App() {
     return (
         <Container maxWidth="md">
             <header className="App-header">
-                <h1 className="main-title">ToDo List</h1>
+                <h1 className="main-title" style={{fontWeight:'normal',color:'#444'}}>ToDo List</h1>
             </header>
             <ToDoAdd />
             <ToDoList />
