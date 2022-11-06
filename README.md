@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# React To Do App with Redux Toolkit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple react application for storing tasks. 
 
-## Available Scripts
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+ 1. Clone the repo by entering `git clone ..` to your terminal
+ 2. Open app directory in your Terminal
+ 3. CD into server directory `cd .\server\`
+ 4. Start server `npm run watch`
+ 5. Open another terminal in root app directory
+ 6. Start the app by running `npm run start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Case Details
+Project has been built for a special case request. Here you can find the requested case details along with their implementation.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### User Story
+**As a User, i want to check my to-do list items.**
+User can check/uncheck for changing the task complete status.
+**As a User, i want to add new to-do item.**
+User can add new to do tasks easily by clicking on Add button
+**As a User, i want to remove some to-do item**
+User can easily remove any to do task just by clicking the garbage icon at the right side of a task.
 
-### `npm test`
+### Notes
+**Create simple GUI**
+GUI built as simple as possible. Given example design exactly applied to the app without making any changes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Project should be support GET/POST actions**
+In order to use GET/POST methods, a server application has been included into project as a monorepo. Server does not connect to any database and uses a mock js object.
 
-### `npm run build`
+**Use Material-UI for React or custom components**
+The entire UI built by using Material-UI style and components. No additional UI has been integrated as per the case request.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Use Fake Backend Provider or mocked Json file**
+A fake server without database integration has been added as monorepo in order to use GET/POST methods actively, 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Support fully responsive design**
+Design is fully responsive and tested on different screen resolutions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Use Sass/Scss css pre-processor**
+No Sass/Scss has been used in this app. Due to the example design, UI has been built via Material-UI. Thus, no additional CSS was required. 
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Use CDD (Component Driven Development) approach**
+Most components has been integrated from Material-UI. Additional components can be found in the components directory. App built on component architecture.
