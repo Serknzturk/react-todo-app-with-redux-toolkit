@@ -5,7 +5,7 @@ import {addNewSliceSettings} from '../toDoAdd/toDoAddSlice.js';
 export const loadToDos = createAsyncThunk(
 	'allToDos/loadToDos',
 	async () => {
-		const data = await fetch('//localhost:8081/api/todos',{
+		const data = await fetch('http://localhost:8081/api/todos',{
 			method: 'GET',
 			headers: {
 			  'Content-Type': 'application/json',

@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import './App.css';
 import {useDispatch} from 'react-redux';
 import Container from '@mui/material/Container';
 import {loadToDos} from './features/toDoList/toDoListSlice.js';

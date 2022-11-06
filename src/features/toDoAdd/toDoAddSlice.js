@@ -4,7 +4,7 @@ export const toDoAddNew = createAsyncThunk(
 	'allToDos/addNewToDo',
 	async (from, thunkAPI) => {
 		const {isAdding, ...sendData} = from; 
-		const data = await fetch('//localhost:8081/api/todo-add',{
+		const data = await fetch('http://localhost:8081/api/todo-add',{
 			method: 'POST',
 			headers: {
 			  'Content-Type': 'application/json',

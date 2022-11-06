@@ -19,6 +19,10 @@ export default function ToDoSingle(props){
     const isChecking = {status:false};
     const isRemoving = {status:false};
 
+    if(typeof singleToDo == 'undefined' || !singleToDo.hasOwnProperty('id')){
+        return (<></>);
+    }
+
 	const completeClickEvent = (e) => {
         if(isChecking.status) return;
 
@@ -36,7 +40,7 @@ export default function ToDoSingle(props){
     }
 
 	return (
-		<ListItem id={singleToDo.id} divider={true}
+		<ListItem id={'todo-'+singleToDo.id} divider={true}
           secondaryAction={
             <IconButton edge="end" aria-label="delete" onClick={(e)=>removeClickEvent(e)}>
               <DeleteIcon sx={{color:'red'}} />
@@ -44,7 +48,8 @@ export default function ToDoSingle(props){
           }
         >
           <ListItemAvatar>
-              <Checkbox aria-label="Completed" 
+              <Checkbox aria-label="Completed"
+                id={'complete-check-'+singleToDo.id} 
               	onClick={(e)=>{completeClickEvent(e)}} 
               	checked={singleToDo.checked} 
               	/>
@@ -53,12 +58,10 @@ export default function ToDoSingle(props){
           	(singleToDo.checked ? <strike>
           		<ListItemText
             		primary={singleToDo.title}
-            		//secondary="Secondary text"
           		/>
           	</strike> :
           	<ListItemText
             	primary={singleToDo.title}
-            	//secondary="Secondary text"
           	/>)
           }
 

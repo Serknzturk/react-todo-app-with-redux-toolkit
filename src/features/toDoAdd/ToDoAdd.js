@@ -40,7 +40,7 @@ export default function ToDoAdd() {
 					<TextField name="todoTitle" size="small" fullWidth id="outlined-basic" label="New Task" variant="outlined" required />
 				</Grid>
 				<Grid item xs={2}>
-					<Button type="submit" variant="contained">Add</Button>
+					<Button type="submit" name="Add New To Do" variant="contained">Add</Button>
 				</Grid>
 				<Grid item xs={1}></Grid>
 			</Grid>
